@@ -3,24 +3,21 @@
 **  in each of the li components
 */
 function clickMe(){
-    let shoppingList = document.getElementById('list');
+    let shoppingList = document.getElementsByClassName('list');
     
-    shoppingList.addEventListener('click', (event) => {
+    shoppingList[0].addEventListener('click', (event) => {
 
         if(event.target.matches('.check')){
             event.preventDefault();
-            let itemC = event.target.parentElement;
-
-            if(itemC.children[0].style.background == ""){
-                itemC.children[0].style.background = "black";
+            if(event.target.parentElement.children[0].style.background == ""){
+                event.target.parentElement.children[0].style.background = "black";
             }else{
-                itemC.children[0].style.background = "";
+                event.target.parentElement.children[0].style.background = "";
             }  
         }
 
         if(event.target.matches('.del')){
-            let itemD = event.target.parentElement;
-            itemD.parentElement.removeChild(itemD);
+            event.target.parentElement.parentElement.removeChild( event.target.parentElement);
         }
     });
 }
